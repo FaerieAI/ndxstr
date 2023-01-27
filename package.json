@@ -13,7 +13,8 @@
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
     "db:migrate": "knex migrate:latest",
     "db:migrate:rollback": "knex migrate:rollback",
-    "db:seed": "knex seed:run"
+    "db:seed": "knex seed:run",
+    "test:unit": "mocha 'tests/**/*.spec.ts'"
   },
   "dependencies": {
     "@noble/secp256k1": "1.6.3",
