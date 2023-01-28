@@ -79,7 +79,7 @@ describe('verifySignature', () => {
     // Sign the event with the private key of the pubkey property in the event object 
     const signedEvt = signEvent(evt)
 
-    let result = await verifySignature(signedEvt)
+    const result = await verifySignature(signedEvt)
 
     // Check that result is a boolean value and that it returns true for a validly signed event object 
     expect(typeof result).to.equal('boolean')    
