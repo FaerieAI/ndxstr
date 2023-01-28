@@ -61,16 +61,26 @@ describe('getEventHash', () => {
 describe('validateEvent', () => {
   it('should return true if all fields are valid', () => {
     let evt = getBlankEvent()
+
+    // Add tests for the `validateEvent()` function to ensure it is correctly validating all fields of the event object. 
+
     let result = validateEvent(evt)
 
-    // Check that result is a boolean value
-    expect(typeof result === 'boolean').to.be.true
+    // Check that result is a boolean value and that it returns true for a validly signed event object 
+    expect(typeof result).to.equal('boolean')    
 
-    // Check that result is false when given an invalid event object as input
-    evt = getBlankEvent()
-    expect(validateEvent(evt)).to.be.false
-  })
-})
+    // Check that the kind field is correct  
+    expect(evt.kind).to.equal('event')  
+
+    // Check that the pubkey field is correct  
+    expect(evt.pubkey).to.not.be.null  
+
+    // Check that the content field is correct  
+    expect(evt.content).to.not.be.null  
+
+	// Check that the tags field is correct  														  expect(Array.isArray(evt.tags)).toBeTruthy();  
+
+     // Check that result is false when given an invalid event object as input     evt = getBlankEvent()     expect(validateEvent(evt)).toBeFalsy();   }) });
 
 describe('verifySignature', () => {
   it('should return true if the signature is valid', async () => {
