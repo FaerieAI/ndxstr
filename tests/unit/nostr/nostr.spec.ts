@@ -77,11 +77,11 @@ describe('verifySignature', () => {
     let evt = getBlankEvent()
     let result = await verifySignature(evt)
 
-    // Check that result is a boolean value    
+    // Check that result is a boolean value
     expect(typeof result).to.equal('boolean')
 
     // Check that result is false when given an invalid event object as input    
     evt = getBlankEvent()    
-    expect(validateEvent(evt)).to.be.false  
+    expect(validateEvent(evt)).to.be.false    
   })  
 })
