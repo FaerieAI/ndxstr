@@ -75,13 +75,15 @@ describe('validateEvent', () => {
 describe('verifySignature', () => {
   it('should return true if the signature is valid', async () => {
     let evt = getBlankEvent()
-    let result = await verifySignature(evt)
 
-    // Check that result is a boolean value
-    expect(typeof result).to.equal('boolean')
+    // Sign the event with the private key of the pubkey property in the event object 
+    const signedEvt = signEvent(evt)
 
-    // Check that result is false when given an invalid event object as input    
-    evt = getBlankEvent()    
-    expect(validateEvent(evt)).to.be.false    
+    let result = await verifySignature(signedEvt)
+
+    // Check that result is a boolean value and that it returns true for a validly signed event object 
+    expect(typeof result).to.equal('boolean')    
+    expect(result).to.be.true    
+
   })  
 })
