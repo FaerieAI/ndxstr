@@ -51,9 +51,10 @@ describe('getEventHash', () => {
     let evt = getBlankEvent()
     let hash = getEventHash(evt)
 
-    // Check that hash is a hexadecimal string 32 characters long (64 characters total including "0x")
+    // Check that hash is a hexadecimal string 32 characters long (64 characters total including "0x") and matches the event's content and tags properties
     expect(hash).to.be.a('string')
     expect(hash).to.have.lengthOf(64)
+    expect(hash).to.equal(getEventHash({ ...evt, content: evt.content, tags: evt.tags }))
   })
 })
 
