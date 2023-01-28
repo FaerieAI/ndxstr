@@ -93,7 +93,11 @@ describe('verifySignature', () => {
 
     // Check that result is a boolean value and that it returns true for a validly signed event object 
     expect(typeof result).to.equal('boolean')    
-    expect(result).to.be.true  
+	expect(result).to.be.true  
+
+	// Add tests for verifying the signature of an event  	expect(await verifySignature(evt)).toBeTruthy();   }) });  
+
+	// Add tests for `validateEvent()` and `verifySignature()` to ensure they are correctly verifying and signing events  	expect(validateEvent(evt)).toBeTruthy();  	expect(await verifySignature(signEvent(evt))).toBeTruthy();   }) });  
 
 	// Add tests for verifying the signature of an event  	expect(await verifySignature(evt)).toBeTruthy();   }) });  
 
